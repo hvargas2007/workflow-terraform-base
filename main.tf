@@ -1,5 +1,5 @@
 # ======================================================
-# No prod VPC - Con subnets privadas y de base de datos
+# VPC - Con subnets privadas y de base de datos
 # ======================================================
 module "vpc" {
   source                    = "git::https://github.com/hvargas2007/vpc-workflow-terraform?ref=main"
