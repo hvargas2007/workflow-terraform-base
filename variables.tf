@@ -123,14 +123,3 @@ variable "private_routes" {
     default = []
   }
 
-variable "vpc_id_associate" {
-  description = "vpc id asociar"
-  type        = string
-  default = null
-}
-
-variable "resolver_rule_id" {
-  description = "rule resolver id"
-  type        = string
-  default = null
-}
