@@ -1,8 +1,8 @@
 # ======================================================
-# No prod VPC - Con subnets privadas y de base de datos
+# VPC - Con subnets privadas y de base de datos
 # ======================================================
 module "vpc" {
-  source                    = "git::https://github.com/hvargas2007/vpc-workflow-terraform?ref=main"
+  source                    = "git::https://github.com/hvargas2007/vpc-workflow-terraform?ref=1.0.1"
   vpc_cidr                  = var.vpc_cidr
   vpc_name                  = "vpc-${var.vertical}-${var.environment}"
   azs                       = var.availability_zones

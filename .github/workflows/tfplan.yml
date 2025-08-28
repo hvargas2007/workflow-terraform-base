@@ -1,17 +1,11 @@
 name: Terraform plan Action
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to run terraform plan'
-        required: true
-        type: choice
-        options:
-          - dev
-          - qa
-          - main
-
+  pull_request:
+    branches:
+      - dev
+      - qa
+      - main
 jobs:
   tfplan:
     environment:
@@ -32,4 +26,4 @@ jobs:
           AWS_REGION: ${{ vars.AWS_REGION }}
           AWS_BACKEND: ${{ vars.AWS_BACKEND }}
           PROJECT_NAME: ${{ vars.PROJECT_NAME }}
-          RULES_TO_SKIP_CHECKOV: CKV_AWS_119
+          RULES_TO_SKIP_CHECKOV: CKV_TF_1
