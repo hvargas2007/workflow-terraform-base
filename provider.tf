@@ -9,8 +9,8 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = "networking-latamweb-dev-terraform-states"
-    key     = "latamweb/vpc/terraform.tfstate"
+    bucket         = "BUCKET_NAME"
+    key            = "global/PROJECT_NAME/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
     # use_lockfile = true  # Requires Terraform 1.1+
