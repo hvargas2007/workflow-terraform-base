@@ -10,10 +10,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  tfplan:
+  tfapply:
     environment:
       name: ${{ github.base_ref }}
-    name: Terraform Plan
+    name: Terraform Apply
     runs-on: ubuntu-latest
     permissions:
       id-token: write # This is required for requesting the JWT
