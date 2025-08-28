@@ -1,0 +1,35 @@
+name: Terraform apply Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run terraform apply'
+        required: true
+        type: choice
+        options:
+          - dev
+          - qa
+          - main
+
+jobs:
+  tfplan:
+    environment:
+      name: ${{ github.base_ref }}
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read # This is required for actions/checkout
+      pull-requests: write # This is required for infracost to write on pull requests.
+    steps:
+      - name: Terraform apply
+        uses: hvargas2007/centralize-github-actions-workflows/.github/actions/terraform/apply@main
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          USERNAME_GITHUB: ${{ secrets.USERNAME_GITHUB }}
+          AWS_ROLE: ${{ vars.AWS_ROLE }}
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          AWS_BACKEND: ${{ vars.AWS_BACKEND }}
+          PROJECT_NAME: ${{ vars.PROJECT_NAME }}
+          RULES_TO_SKIP_CHECKOV: CKV_AWS_119
