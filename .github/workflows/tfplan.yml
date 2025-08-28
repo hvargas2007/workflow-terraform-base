@@ -1,17 +1,11 @@
 name: Terraform plan Action
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to run terraform plan'
-        required: true
-        type: choice
-        options:
-          - dev
-          - qa
-          - main
-
+  pull_request:
+    branches:
+      - dev
+      - qa
+      - main
 jobs:
   tfplan:
     environment:
